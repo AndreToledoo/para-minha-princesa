@@ -96,16 +96,16 @@ function startIntro() {
 }
 
 const photoFiles = [
-  "img/foto1.jpg",
-  "img/foto2.jpg",
-  "img/foto3.jpg",
-  "img/foto4.jpg",
-  "img/foto5.jpg",
-  "img/foto6.jpg",
-  "img/foto7.jpg",
-  "img/foto8.jpg",
-  "img/foto9.jpg",
-  "img/foto10.jpg"
+  "foto1.jpg",
+  "foto2.jpg",
+  "foto3.jpg",
+  "foto4.jpg",
+  "foto5.jpg",
+  "foto6.jpg",
+  "foto7.jpg",
+  "foto8.jpg",
+  "foto9.jpg",
+  "foto10.jpg"
 ];
 
 const gallery = document.getElementById("gallery");
