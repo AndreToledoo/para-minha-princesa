@@ -337,3 +337,77 @@ document.querySelectorAll(".gallery-item").forEach((item, index) => {
   item.style.transitionDelay = `${Math.min(index * 70, 420)}ms`;
   photoObserver.observe(item);
 });
+
+// ===================================
+// NOSSA BRINCADEIRA
+// ===================================
+
+const loveGameText = document.getElementById("loveGameText");
+const loveGameButton = document.getElementById("loveGameButton");
+
+const loveGameSteps = [
+  {
+    type: "her",
+    text: "Daqui até a lua 🌙"
+  },
+  {
+    type: "me",
+    text: "Ida e volta?"
+  },
+  {
+    type: "her",
+    text: "Pra sempre! ❤️"
+  }
+];
+
+let loveGameStep = 0;
+
+function addGameMessage(type, text) {
+  const message = document.createElement("p");
+
+  message.className =
+    type === "me"
+      ? "game-line game-me"
+      : "game-line game-her";
+
+  message.textContent = text;
+
+  loveGameText.appendChild(message);
+}
+
+loveGameButton.addEventListener("click", () => {
+  if (loveGameStep >= loveGameSteps.length) {
+    return;
+  }
+
+  const currentStep = loveGameSteps[loveGameStep];
+
+  addGameMessage(
+    currentStep.type,
+    currentStep.text
+  );
+
+  loveGameStep++;
+
+  if (loveGameStep === 1) {
+    loveGameButton.textContent = "Continuar ❤️";
+  }
+
+  if (loveGameStep === loveGameSteps.length) {
+    loveGameButton.disabled = true;
+    loveGameButton.textContent = "Pra sempre ❤️";
+
+    const finalText = document.createElement("p");
+    finalText.className = "game-final";
+    finalText.textContent = "Daqui até a lua, ida e volta, pra sempre. ❤️";
+
+    loveGameText.appendChild(finalText);
+
+    hearts.push(
+      ...Array.from(
+        { length: 120 },
+        () => new Heart()
+      )
+    );
+  }
+});
