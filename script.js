@@ -125,6 +125,12 @@ photoFiles.forEach((file, index) => {
   item.addEventListener("click", () => openModal(index));
   gallery.appendChild(item);
 });
+const heroPhoto = document.querySelector(".hero-photo");
+const firstGalleryImage = document.querySelector(".gallery-item img");
+
+if (heroPhoto && firstGalleryImage) {
+  heroPhoto.src = firstGalleryImage.src;
+}
 
 const imageModal = document.getElementById("imageModal");
 const modalImage = document.getElementById("modalImage");
@@ -134,9 +140,16 @@ const nextImageButton = document.getElementById("nextImage");
 let currentImageIndex = 0;
 
 function showModalImage(index) {
-  currentImageIndex = (index + photoFiles.length) % photoFiles.length;
-  modalImage.src = photoFiles[currentImageIndex];
-  modalImage.alt = `Momento de nós dois ${currentImageIndex + 1}`;
+  const galleryImages = document.querySelectorAll(".gallery-item img");
+
+  currentImageIndex =
+    (index + galleryImages.length) % galleryImages.length;
+
+  const selectedImage = galleryImages[currentImageIndex];
+
+  modalImage.src = selectedImage.src;
+  modalImage.alt =
+    `Momento de nós dois ${currentImageIndex + 1}`;
 }
 
 function openModal(index) {
