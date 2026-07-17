@@ -2,10 +2,29 @@
 const giftScreen = document.getElementById("giftScreen");
 const site = document.getElementById("site");
 
+const spotifyPlayer = document.getElementById("spotifyPlayer");
+const musicStatus = document.getElementById("musicStatus");
+
+function startMusicFromEnvelope() {
+  if (!spotifyPlayer) return;
+
+  const currentSource = spotifyPlayer.getAttribute("src");
+  if (currentSource && !currentSource.includes("autoplay=1")) {
+    const separator = currentSource.includes("?") ? "&" : "?";
+    spotifyPlayer.setAttribute("src", `${currentSource}${separator}autoplay=1`);
+  }
+
+  if (musicStatus) {
+    musicStatus.textContent = "A música foi preparada. Caso o Spotify não inicie sozinho, toque no play.";
+  }
+}
+
+
 function openGift() {
   if (giftScreen.classList.contains("open")) return;
 
   giftScreen.classList.add("open");
+  startMusicFromEnvelope();
 
   setTimeout(() => {
     site.hidden = false;
@@ -265,4 +284,43 @@ loveButton.addEventListener("click", () => {
   hearts.push(...Array.from({ length: 220 }, () => new Heart()));
   finalMessage.textContent = "Eu te amo infinitamente, minha princesa. ❤️";
   loveButton.textContent = "Para sempre ❤️";
+});
+
+
+// Corações discretos no fundo
+const ambientHearts = document.getElementById("ambientHearts");
+
+function createAmbientHeart() {
+  if (!ambientHearts || document.hidden) return;
+
+  const heart = document.createElement("span");
+  heart.className = "ambient-heart";
+  heart.textContent = "♥";
+  heart.style.left = `${Math.random() * 100}%`;
+  heart.style.fontSize = `${Math.random() * 14 + 10}px`;
+  heart.style.animationDuration = `${Math.random() * 8 + 10}s`;
+  heart.style.setProperty("--drift", `${Math.random() * 90 - 45}px`);
+  ambientHearts.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 19000);
+}
+
+setInterval(createAmbientHeart, 1150);
+
+// Fotos aparecem individualmente durante a rolagem
+const photoObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("photo-visible");
+      photoObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12,
+  rootMargin: "0px 0px -35px 0px"
+});
+
+document.querySelectorAll(".gallery-item").forEach((item, index) => {
+  item.style.transitionDelay = `${Math.min(index * 70, 420)}ms`;
+  photoObserver.observe(item);
 });
