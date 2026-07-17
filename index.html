@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#160d1f">
+  <title>Para meu amor ❤️</title>
+  <meta name="description" content="Um presente feito com amor para meu amor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="giftScreen" class="gift-screen" aria-label="Abrir surpresa" role="button" tabindex="0">
+    <div class="splash-ambient splash-ambient-one"></div>
+    <div class="splash-ambient splash-ambient-two"></div>
+
+    <div class="envelope-scene" aria-hidden="true">
+      <div class="envelope-shadow"></div>
+
+      <div class="envelope">
+        <div class="envelope-back"></div>
+
+        <div class="love-letter-preview">
+          <span class="letter-heart">♥</span>
+        </div>
+
+        <div class="envelope-front"></div>
+        <div class="envelope-flap"></div>
+
+        <div class="wax-seal">
+          <span>♥</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tap-hint">Toque para abrir</div>
+  </div>
+
+  <canvas id="starsCanvas" aria-hidden="true"></canvas>
+  <canvas id="heartsCanvas" aria-hidden="true"></canvas>
+
+  <main id="site" class="site" hidden>
+    <section class="hero reveal">
+      <div class="hero-photo-wrap">
+        <img src="img/foto1.jpg" alt="nós dois juntos" class="hero-photo">
+        <div class="hero-glow"></div>
+      </div>
+
+      <div class="hero-content">
+        <p class="eyebrow">Um presente feito com carinho</p>
+        <h1>Para meu amor ❤️</h1>
+        <p id="introText" class="intro-text"></p>
+        <a href="#contador" class="scroll-button">Ver nossa história</a>
+      </div>
+    </section>
+
+    <section id="contador" class="section reveal">
+      <div class="section-heading">
+        <span>Desde 10 de fevereiro de 2024</span>
+        <h2>Nosso tempo juntos</h2>
+      </div>
+
+      <div class="counter-grid">
+        <article class="counter-card">
+          <strong id="days">0</strong>
+          <span>Dias</span>
+        </article>
+        <article class="counter-card">
+          <strong id="hours">0</strong>
+          <span>Horas</span>
+        </article>
+        <article class="counter-card">
+          <strong id="minutes">0</strong>
+          <span>Minutos</span>
+        </article>
+        <article class="counter-card">
+          <strong id="seconds">0</strong>
+          <span>Segundos</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-heading">
+        <span>Uma mensagem só para você</span>
+        <h2>Minha carta para meu amor</h2>
+      </div>
+
+      <article class="letter-card">
+        <div class="letter-icon">💌</div>
+        <p id="letterText" class="letter-text"></p>
+        <div class="signature">Com amor, André ❤️</div>
+      </article>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-heading">
+        <span>Alguns dos nossos momentos</span>
+        <h2>Nossa galeria</h2>
+      </div>
+
+      <div id="gallery" class="gallery"></div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-heading">
+        <span>Para lembrar de nós dois</span>
+        <h2>Nossa música</h2>
+      </div>
+
+      <div class="music-card">
+        <iframe
+          src="https://open.spotify.com/embed/playlist/4e4jZPgf106mA4VQ6Mp2KN"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allowfullscreen
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+
+    <section class="final-section reveal">
+      <p class="final-small">Você torna meus dias mais bonitos.</p>
+      <h2>Obrigado por existir, meu amor ❤️</h2>
+      <p>Que a gente continue criando muitos momentos especiais juntos.</p>
+      <button id="loveButton" class="love-button" type="button">Clique aqui ❤️</button>
+      <p id="finalMessage" class="final-message" aria-live="polite"></p>
+    </section>
+
+    <footer>
+      <span>Feito especialmente para meu amor.</span>
+      <strong>Com amor, André ❤️</strong>
+    </footer>
+  </main>
+
+  <div id="imageModal" class="image-modal" aria-hidden="true">
+    <button id="closeModal" class="modal-close" type="button" aria-label="Fechar imagem">×</button>
+    <button id="prevImage" class="modal-nav modal-prev" type="button" aria-label="Foto anterior">‹</button>
+    <img id="modalImage" src="" alt="">
+    <button id="nextImage" class="modal-nav modal-next" type="button" aria-label="Próxima foto">›</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
